@@ -8,8 +8,8 @@ const AppointmentCard = () => {
             background: `url(${img2})`
         }}>
             <div className="hero  ">
-                <div className="hero-content flex-col lg:flex-row">
-                    <img src={img} alt='' className=" hidden lg:w-1/2 md:block w-1/2 rounded-lg -mt-36 " />
+                <div className="hero-content flex-col lg:flex-row pb-0">
+                    <img src={img} alt='' className=" hidden lg:w-1/2 md:block w-1/2 rounded-lg -mt-36  " />
                     <div>
                         <h2 className='text-primary text-xl font-semibold '>Appointment</h2>
                         <h1 className="text-4xl font-bold text-white">Make an appointment Today</h1>

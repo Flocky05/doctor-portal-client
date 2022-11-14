@@ -1,31 +1,42 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useForm } from 'react-hook-form';
 import { Link } from 'react-router-dom';
 
+
 const Login = () => {
+    const { register, handleSubmit } = useForm();
+    const handleLogin = data => {
+        console.log(data);
+    }
+
     return (
-        <div className="hero min-h-screen bg-gray-100 mb-20">
-            <div className="card flex-shrink-0 w-1/4  shadow-2xl bg-base-100 sm:p-0">
-                <h2 className='text-3xl font-bold text-center p-3'>Login</h2>
-                <div className="card-body">
-                    <div className="form-control">
+        <div className='h-[800px] flex justify-center items-center'>
+            <div className='w-96 p-7'>
+                <h2 className='text-4xl text-center'>Login</h2>
+                <form onSubmit={handleSubmit(handleLogin)}>
+                    <div className="form-control w-full max-w-xs">
                         <label className="label">
                             <span className="label-text">Email</span>
                         </label>
-                        <input type="text" placeholder="email" className="input input-bordered" />
+                        <input type="text" {...register("email")} className="input input-bordered w-full max-w-xs" />
                     </div>
-                    <div className="form-control">
+                    <div className="form-control w-full max-w-xs">
                         <label className="label">
                             <span className="label-text">Password</span>
                         </label>
-                        <input type="text" placeholder="password" className="input input-bordered" />
+                        <input type="password" {...register("password")} className="input input-bordered w-full max-w-xs" />
                         <label className="label">
-                            <Link to='register' href="#" className="label-text-alt link link-hover">Forgot password?</Link>
+                            <span className="label-text"> forgot password</span>
                         </label>
                     </div>
-                    <div className="form-control mt-6">
-                        <button className="btn bg-gradient-to-r from-sky-500 to-indigo-500 text-white">Login</button>
+                    <input className='btn btn-accent px-3 w-full' type="submit" value="Login" />
+                    <div className='flex mt-3'>
+                        <p className='gap-3 mr-3'>New to Doctors Portal?</p>
+                        <Link to='/Register' className='text-secondary'>Create new account</Link>
                     </div>
-                </div>
+                    <div className="divider">OR</div>
+                    <button className="btn btn-outline w-full">CONTINUE WITH GOOGLE</button>
+                </form>
             </div>
         </div>
     );
