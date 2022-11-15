@@ -41,7 +41,7 @@ const Login = () => {
                     <input className='btn btn-accent px-3 w-full' type="submit" value="Login" />
                     <div className='flex mt-3'>
                         <p className='gap-3 mr-3'>New to Doctors Portal?</p>
-                        <Link to='/Register' className='text-secondary'>Create new account</Link>
+                        <Link to='/signup' className='text-secondary'> new account</Link>
                     </div>
                     <div className="divider">OR</div>
                     <button className="btn btn-outline w-full">CONTINUE WITH GOOGLE</button>
