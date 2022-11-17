@@ -1,17 +1,31 @@
-import React, { useContext } from 'react';
+import { updateCurrentUser } from 'firebase/auth';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { AuthContex } from '../../Contexts/AuthProvider';
 
 const SignUp = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const { createUser } = useContext(AuthContex)
+    const { createUser, updateUser } = useContext(AuthContex)
+    const [signUpError, setSignUPError] = useState('')
+    const navigate = useNavigate();
     const handleSignUp = data => {
-        console.log(data);
+
         createUser(data.email, data.password)
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                toast('User Created Succesfully.')
+                const userInfo = {
+                    displayName: data.name
+                }
+                updateUser(userInfo)
+                    .then(() => {
+                        navigate('/');
+                    })
+                    .catch(err => console.log(err));
+
             })
             .catch(error => console.log(error));
 
